@@ -1,0 +1,26 @@
+<div class="login">
+    <p-card class="login-card">
+        <h1 class="login-card__title">Log<span>In</span></h1>
+        <div class="grid p-fluid">
+            <div class="col-12 md:col-4">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon login-card__icon"><i class="pi pi-user"></i></span>
+                    <input type="text" pInputText placeholder="Username">
+                </div>
+            </div>
+            <div class="col-12 md:col-4">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon login-card__icon" (click)="toggleIcon()"><i
+                            class="pi + {{ iconEye}}"></i></span>
+                    <input [type]="type" pInputText placeholder="Password">
+                </div>
+            </div>
+            <p class="login-card__createAccount">Do you not have account ?
+                <a href="#"> Create Account </a>
+            </p>
+            <button class="col-12 md:col-4 mt-5" pButton type="button" label="Submit"></button>
+        </div>
+
+    </p-card>
+
+</div>
