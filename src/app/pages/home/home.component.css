@@ -3,6 +3,3 @@
     height: 100vh;
     background-color: #6366F1;
 }
-.home-content  router-outlet app-login {
-    width: 100%;
-}
