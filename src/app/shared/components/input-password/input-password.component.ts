@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { InputModel } from '../input-text/input-text.component';
-
 @Component({
   selector: 'app-input-password',
   templateUrl: './input-password.component.html',

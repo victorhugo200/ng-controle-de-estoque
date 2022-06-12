@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { InputModel } from 'src/app/shared/components/input-text/input-text.component';
+import { InputModel } from 'src/app/shared/models/input-text';
 
 @Component({
   selector: 'app-login',
