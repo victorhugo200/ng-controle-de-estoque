@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { InputModel } from 'src/app/shared/components/input-text/input-text.component';
 
 @Component({
   selector: 'app-login',
@@ -6,19 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  iconEye = 'pi-eye';
-  type = 'text';
-  constructor() {}
+  loginForm!: FormGroup;
 
-  ngOnInit(): void {}
+  specInputText: InputModel = {
+    type: 'text',
+    icon: 'pi-user',
+    placeholder: 'Username',
+  };
+  specInputPassword = {
+    icon: 'pi-eye',
+    placeholder: 'Password',
+  };
+  constructor(private fb: FormBuilder) {}
 
-  toggleIcon() {
-    if (this.type === 'text' && this.iconEye === 'pi-eye') {
-      this.type = 'password';
-      this.iconEye = 'pi-eye-slash';
-    } else {
-      this.iconEye = 'pi-eye';
-      this.type = 'text';
-    }
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      userName: '',
+      password: '',
+    });
   }
 }

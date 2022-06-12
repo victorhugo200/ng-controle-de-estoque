@@ -25,11 +25,8 @@
  color: #4F46E5;
 }
 
-.login-card__icon {
-    height: 47px;
-}
-.login-card input {
-    margin-bottom: 16px !important;
+.login-card .col-input-password {
+    margin: 16px 0;
 }
 
 .login-card__createAccount {
