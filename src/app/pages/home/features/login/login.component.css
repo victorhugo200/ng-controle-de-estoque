@@ -28,6 +28,9 @@
 .login-card .col-input-password {
     margin: 16px 0;
 }
+.login-card .col-input-password small {
+    color: red;
+ } 
 
 .login-card__createAccount {
     text-align: center;

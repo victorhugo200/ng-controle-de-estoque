@@ -1,21 +1,31 @@
+<p-toast position="top-center"></p-toast>
 <div class="login">
     <p-card class="login-card">
         <h1 class="login-card__title">Log<span>In</span></h1>
-        <form [formGroup]="loginForm"></form>
-        <div class="grid p-fluid">
-            <div class="col-12 md:col-4">
-                <app-input [formRef]="loginForm" controlName="userName" [spec]="specInputText"></app-input>
+        <form [formGroup]="loginForm" (keyup.enter)="login()" (submit)="login()">
+            <div class="grid p-fluid">
+                <div class="col-12 md:col-4">
+                    <app-input [formRef]="loginForm" controlName="userName" [spec]="specInputText"></app-input>
+                    <small
+                        *ngIf="loginForm?.get('userName')?.hasError('required') && loginForm?.get('userName')?.touched">
+                        Username is required
+                    </small>
+                </div>
+                <div class="col-12 md:col-4  col-input-password">
+                    <app-input-password [formRef]="loginForm" controlName="password" [spec]="specInputPassword">
+                    </app-input-password>
+                    <small
+                        *ngIf="loginForm?.get('password')?.hasError('required') && loginForm?.get('password')?.touched">
+                        Password is required
+                    </small>
+                </div>
+                <p class="login-card__createAccount">
+                    Do you not have account ?
+                    <a href="#"> Create Account </a>
+                </p>
+                <button class="col-12 md:col-4 mt-5" pButton type="submit" label="Submit"></button>
             </div>
-            <div class="col-12 md:col-4  col-input-password">
-                <app-input-password [formRef]="loginForm" controlName="password" [spec]="specInputPassword">
-                </app-input-password>
-            </div>
-            <p class="login-card__createAccount">
-                Do you not have account ?
-                <a href="#"> Create Account </a>
-            </p>
-            <button class="col-12 md:col-4 mt-5" pButton type="button" label="Submit"></button>
-        </div>
+        </form>
 
     </p-card>
 

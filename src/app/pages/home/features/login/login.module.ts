@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
-import { TagModule } from 'primeng/tag';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { CardModule } from 'primeng/card';
-import { InputModule } from 'src/app/shared/components/input-text/input-text.module';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { TagModule } from 'primeng/tag';
 import { InputPasswordModule } from 'src/app/shared/components/input-password/input-password.module';
+import { InputModule } from 'src/app/shared/components/input-text/input-text.module';
+import { ToastModule } from 'primeng/toast';
+
+import { LoginComponent } from './login.component';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -20,6 +22,7 @@ import { InputPasswordModule } from 'src/app/shared/components/input-password/in
     InputModule,
     InputPasswordModule,
     ReactiveFormsModule,
+    ToastModule,
   ],
   exports: [LoginComponent],
 })
