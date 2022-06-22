@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const { userName, password } = this.loginForm.getRawValue();
       this.loginService.authenticate(userName, password).subscribe({
-        next: (data) => {
+        next: () => {
           this.addSingle();
         },
         error: (error) => {

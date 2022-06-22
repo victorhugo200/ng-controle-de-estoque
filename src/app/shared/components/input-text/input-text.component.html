@@ -1,10 +1,12 @@
 <div [formGroup]="formRef">
     <div class="p-inputgroup input-group" *ngIf="spec.type === 'text'">
         <span class="p-inputgroup-addon" *ngIf="spec?.icon"><i class="pi {{ spec.icon }}"></i></span>
-        <input type="text" pInputText [placeholder]="spec?.placeholder" [formControlName]="controlName">
+        <input type="text" data-cy="input-text" pInputText [placeholder]="spec?.placeholder"
+            [formControlName]="controlName">
     </div>
     <div class="p-inputgroup input-group" *ngIf="spec.type === 'currency'">
         <span class="p-inputgroup-addon" *ngIf="spec?.icon"><i class="pi {{ spec.icon }}"></i></span>
-        <p-inputNumber [formControlName]="controlName" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+        <p-inputNumber data-cy="input-currency " [formControlName]="controlName" mode="currency" currency="USD"
+            locale="en-US"></p-inputNumber>
     </div>
 </div>
