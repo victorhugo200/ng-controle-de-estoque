@@ -7,12 +7,10 @@ import { InputModel } from '../../models/input-text';
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.css'],
 })
-export class InputTextComponent implements OnInit {
+export class InputTextComponent {
   @Input() formRef!: FormGroup;
   @Input() controlName!: string;
   @Input() spec!: InputModel;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

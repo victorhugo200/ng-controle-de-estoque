@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './input-password.component.html',
   styleUrls: ['./input-password.component.css'],
 })
-export class InputPasswordComponent implements OnInit {
+export class InputPasswordComponent {
   @Input() formRef!: FormGroup;
   @Input() controlName!: string;
   @Input() spec!: {
@@ -15,8 +15,6 @@ export class InputPasswordComponent implements OnInit {
   type = 'password';
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   toggleIcon() {
     if (this.type === 'text' && this.spec.icon === 'pi-eye') {
