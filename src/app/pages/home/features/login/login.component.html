@@ -6,7 +6,7 @@
             <div class="grid p-fluid">
                 <div class="col-12 md:col-4">
                     <app-input [formRef]="loginForm" controlName="userName" [spec]="specInputText"></app-input>
-                    <small
+                    <small data-cy="input-error-required"
                         *ngIf="loginForm?.get('userName')?.hasError('required') && loginForm?.get('userName')?.touched">
                         Username is required
                     </small>
@@ -14,7 +14,7 @@
                 <div class="col-12 md:col-4  col-input-password">
                     <app-input-password [formRef]="loginForm" controlName="password" [spec]="specInputPassword">
                     </app-input-password>
-                    <small
+                    <small data-cy="input-error-required"
                         *ngIf="loginForm?.get('password')?.hasError('required') && loginForm?.get('password')?.touched">
                         Password is required
                     </small>

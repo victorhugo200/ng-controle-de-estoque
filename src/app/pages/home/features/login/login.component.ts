@@ -59,8 +59,7 @@ export class LoginComponent implements OnInit {
   addSingle() {
     this.messageService.add({
       severity: 'success',
-      summary: 'Service Message',
-      detail: 'Via MessageService',
+      summary: 'Login successfully',
     });
   }
 }

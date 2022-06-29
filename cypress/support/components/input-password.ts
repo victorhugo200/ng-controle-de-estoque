@@ -18,6 +18,16 @@ class InputPassword {
         expect(text).eq(value);
       });
   }
+
+  waitForErrorMessage(key: string, text: string) {
+    cy.get((elements.input.password.errors as any)[key])
+      .should('be.visible')
+      .should('have.text', text);
+  }
+
+  eventBlur() {
+    cy.get(elements.input.password.element).focus().blur();
+  }
 }
 
 export default new InputPassword();

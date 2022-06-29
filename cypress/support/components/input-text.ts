@@ -7,7 +7,8 @@ class InputText {
 
   setValue(value: string): void {
     this.waitForInputText();
-    cy.get(elements.input.text.element).type(value).blur();
+    cy.get(elements.input.text.element).type(value);
+    this.eventBlur();
   }
 
   haveValue(text: string): void {
@@ -17,6 +18,16 @@ class InputText {
       .then((value) => {
         expect(text).eq(value);
       });
+  }
+
+  waitForErrorMessage(key: string, text: string) {
+    cy.get((elements.input.text.errors as any)[key])
+      .should('be.visible')
+      .should('have.text', text);
+  }
+
+  eventBlur() {
+    cy.get(elements.input.text.element).focus().blur();
   }
 }
 
