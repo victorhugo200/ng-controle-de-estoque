@@ -15,7 +15,7 @@ export class LoginService {
       const user = this.usersService.getUser(userName) as User;
       return of(user);
     } else {
-      return throwError(() => new Error('User or password incorrect !'));
+      return throwError(() => 'User or password incorrect !');
     }
   }
 }

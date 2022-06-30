@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { InputModel } from 'src/app/shared/models/input-text';
 import { LoginService } from 'src/app/shared/service/login.service';
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,26 +42,19 @@ export class LoginComponent implements OnInit {
       const { userName, password } = this.loginForm.getRawValue();
       this.loginService.authenticate(userName, password).subscribe({
         next: () => {
-          this.addSingle();
+          this.router.navigate(['dashboard']);
         },
-        error: (error) => {
+        error: () => {
           this.messageService.add({
             severity: 'error',
             summary: 'User is invalid',
             detail: 'User or password incorrect',
           });
-          this.loginForm.get('userName')?.setErrors({ userNotExist: true });
-          this.loginForm.get('password')?.setErrors({ userNotExist: true });
+          this.loginForm.controls['userName'].setErrors({ userNotExist: true });
+          this.loginForm.controls['password'].setErrors({ userNotExist: true });
           this.loginForm.markAsTouched();
         },
       });
     }
-  }
-
-  addSingle() {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Login successfully',
-    });
   }
 }

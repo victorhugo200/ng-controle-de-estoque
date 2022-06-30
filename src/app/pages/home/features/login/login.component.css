@@ -30,7 +30,8 @@
 }
 
 .login-card  small {
-    color: red;
+    color: #e32929;
+    font-size: 14px;
  } 
 
 .login-card__createAccount {

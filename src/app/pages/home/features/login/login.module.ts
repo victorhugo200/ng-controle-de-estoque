@@ -10,6 +10,7 @@ import { InputModule } from 'src/app/shared/components/input-text/input-text.mod
 import { ToastModule } from 'primeng/toast';
 
 import { LoginComponent } from './login.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -23,6 +24,7 @@ import { LoginComponent } from './login.component';
     InputPasswordModule,
     ReactiveFormsModule,
     ToastModule,
+    RouterModule,
   ],
   exports: [LoginComponent],
 })
