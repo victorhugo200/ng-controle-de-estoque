@@ -16,6 +16,9 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+        data: {
+          title: 'Bytebank - entre ou cadastre-se',
+        },
       },
     ],
   },

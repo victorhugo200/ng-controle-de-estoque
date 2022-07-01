@@ -29,10 +29,6 @@
     margin: var(--spacing-16) 0;
 }
 
-.login-card  small {
-    color: var(--red-primary);
-    font-size: 14px;
- } 
 
 .login-card__createAccount {
     text-align: center;

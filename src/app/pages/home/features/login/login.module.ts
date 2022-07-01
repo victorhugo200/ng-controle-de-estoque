@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 
 import { LoginComponent } from './login.component';
 import { RouterModule } from '@angular/router';
+import { MessageErrorModule } from 'src/app/shared/components/message-error/message-error.module';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -25,6 +26,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     ToastModule,
     RouterModule,
+    MessageErrorModule,
   ],
   exports: [LoginComponent],
 })

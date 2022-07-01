@@ -6,30 +6,30 @@
             <div class="grid p-fluid">
                 <div class="col-12 md:col-4">
                     <app-input [formRef]="loginForm" controlName="userName" [spec]="specInputText"></app-input>
-                    <small data-cy="input-error-required"
-                        *ngIf="loginForm?.get('userName')?.hasError('required') && loginForm?.get('userName')?.touched">
-                        Username is required
-                    </small>
-                    <small *ngIf="loginForm?.get('userName')?.hasError('userNotExist')">
-                        Username is invalid
-                    </small>
+                    <app-message-error data-cy="input-error-required"
+                        *ngIf="loginForm?.get('userName')?.hasError('required') && loginForm?.get('userName')?.touched"
+                        [message]="'Username is required'">
+                    </app-message-error>
+                    <app-message-error *ngIf="loginForm?.get('userName')?.hasError('userNotExist')"
+                        [message]="' Username is invalid'">
+                    </app-message-error>
                 </div>
                 <div class="col-12 md:col-4  col-input-password">
                     <app-input-password [formRef]="loginForm" controlName="password" [spec]="specInputPassword">
                     </app-input-password>
-                    <small data-cy="input-error-required"
-                        *ngIf="loginForm?.get('password')?.hasError('required') && loginForm?.get('password')?.touched">
-                        Password is required
-                    </small>
-                    <small *ngIf="loginForm?.get('password')?.hasError('userNotExist')">
-                        Password is invalid
-                    </small>
+                    <app-message-error data-cy="input-error-required"
+                        *ngIf="loginForm?.get('password')?.hasError('required') && loginForm?.get('password')?.touched"
+                        [message]="'Password is required'">
+                    </app-message-error>
+                    <app-message-error *ngIf="loginForm?.get('password')?.hasError('userNotExist')"
+                        [message]="'Password is invalid'">
+                    </app-message-error>
                 </div>
                 <p class="login-card__createAccount" data-cy="login-createAccount">
                     Do you not have account ?<a href="#"> Create Account</a>
                 </p>
-                <button class="col-12 md:col-4 mt-5" data-cy="login-button-submit" pButton type="submit"
-                    label="Submit"></button>
+                <button class="col-12 md:col-4 mt-5" data-cy="login-button-submit" pButton type="submit" label="Submit">
+                </button>
             </div>
         </form>
 
