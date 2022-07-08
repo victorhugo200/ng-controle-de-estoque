@@ -1,18 +1,17 @@
-
-.login {
+.signup {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-card {
+.signup-card {
     max-width: 600px;
     width: 100%;
 }
 
-.login-card .login-card__title {
+.signup-card .signup-card__title {
     font-size: 36px;
     padding: var(--spacing-8);
     margin-bottom: var(--spacing-24);
@@ -21,28 +20,38 @@
     text-transform: uppercase;
 }
 
-.login-card .login-card__title span {
- color: var(--blue-primary);
+.signup-card .signup-card__title span {
+    color: var(--blue-primary);
+}
+.signup-form .container-fluid  .signup-form-field {
+    margin-bottom: var(--spacing-8);
+}
+.signup-form  .signup-form__submit {
+    margin-top: var(--spacing-16);
+    width: 100% ;
+}
+::ng-deep p-calendar .p-calendar {
+    width: 100% !important;
+    border: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
-.login-card .col-input-password {
-    margin: var(--spacing-16) 0;
-}
 
 
-.login-card__createAccount {
+.signup__redirect {
     text-align: center;
     width: 100%;
-    margin-bottom: var(--spacing-32);
+    margin: var(--spacing-8) 0;
 }
-.login-card__createAccount a {
+.signup__redirect a {
     text-decoration: none;
     font-weight: 600;
     color: var(--blue-secondary);
     position: relative;
 }
 
-.login-card__createAccount a::after {
+.signup__redirect a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -54,11 +63,11 @@
     transition: .3s ease-in-out;
 }
 
-.login-card__createAccount a:hover {
+.signup__redirect a:hover {
     color: var(--blue-primary);
 }
 
-.login-card__createAccount a:hover::after {
+.signup__redirect a:hover::after {
     width: 100%;
     background-color: var(--blue-primary);
 }

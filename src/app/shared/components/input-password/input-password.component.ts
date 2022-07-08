@@ -9,7 +9,7 @@ export class InputPasswordComponent {
   @Input() formRef!: FormGroup;
   @Input() controlName!: string;
   @Input() spec!: {
-    icon: string;
+    icon?: string;
     placeholder: string;
   };
   type = 'password';

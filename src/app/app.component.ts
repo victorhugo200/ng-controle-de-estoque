@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
         filter((navigation) => navigation instanceof NavigationEnd),
         map(() => {
           let child = this.activatedRoute.firstChild;
-          console.log(child);
           while (child) {
             if (child.firstChild) {
               child = child.firstChild;

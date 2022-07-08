@@ -1,0 +1,61 @@
+<div class="signup">
+    <p-card class="signup-card">
+        <h1 class="signup-card__title">Sign<span>Up</span></h1>
+        <form [formGroup]="signupForm" class="signup-form">
+            <div class="container-fluid">
+                <div class="signup-form-field">
+                    <app-input [formRef]="signupForm" controlName="name" [spec]="specInputName">
+                    </app-input>
+                    <app-message-error
+                        *ngIf="signupForm.get('name')?.hasError('required') && signupForm.get('name')?.touched"
+                        message="This field is required"></app-message-error>
+                    <app-message-error
+                        *ngIf="signupForm.get('name')?.hasError('minlength') && signupForm.get('name')?.touched"
+                        message="This field must have a minimum 3 characters"></app-message-error>
+                </div>
+                <div class="signup-form-field">
+                    <app-input [formRef]="signupForm" controlName="userName" [spec]="specInputUserName"></app-input>
+                    <app-message-error
+                        *ngIf="signupForm.get('userName')?.hasError('required') && signupForm.get('userName')?.touched"
+                        message="This field is required"></app-message-error>
+                    <app-message-error
+                        *ngIf="signupForm.get('userName')?.hasError('minlength') && signupForm.get('userName')?.touched"
+                        message="This field must have a minimum 4 characters"></app-message-error>
+                    <app-message-error
+                        *ngIf="signupForm.get('userName')?.hasError('maxlength') && signupForm.get('userName')?.touched"
+                        message="This field should have a maximum of 16 characters"></app-message-error>
+                    <!-- Verificar o erro da mensagem de username pattern na linha abaixo  -->
+                    <app-message-error *ngIf="signupForm.get('userName')?.hasError('pattern') 
+                        && signupForm.get('userName')?.touched" message="pattern"></app-message-error>
+                </div>
+                <div class="signup-form-field">
+                    <app-input [formRef]="signupForm" controlName="email" [spec]="specInputEmail"></app-input>
+                    <app-message-error
+                        *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched"
+                        message="This field is required"></app-message-error>
+                    <app-message-error
+                        *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched"
+                        message="E-mail is invalid!"></app-message-error>
+                </div>
+                <div class="signup-form-field p-inputgroup">
+                    <p-calendar formControlName="dateOfBirth" dateFormat="dd/mm/yy" [showIcon]="true"
+                        placeholder="Date Of Birth">
+                    </p-calendar>
+                </div>
+                <div class="signup-form-field">
+                    <app-input-password [formRef]="signupForm" controlName="password" [spec]="specInputPassword">
+                    </app-input-password>
+                    <app-message-error
+                        *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched"
+                        message="This field is required"></app-message-error>
+                </div>
+
+                <p class="signup__redirect">
+                    Do you have account ? <a [routerLink]="['/','home']">SignIn</a>
+                </p>
+            </div>
+            <button class="signup-form__submit" pButton type="submit" label="Create account">
+            </button>
+        </form>
+    </p-card>
+</div>
