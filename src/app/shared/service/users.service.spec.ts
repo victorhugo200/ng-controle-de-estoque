@@ -22,6 +22,7 @@ describe('UsersService', () => {
       name: 'Usuario 2',
       userName: 'Usuario 2',
       password: '123',
+      dateOfBirth: new Date('1998/09/02'),
     };
     service.listUsers = [];
 

@@ -45,6 +45,7 @@ describe('LoginComponent', () => {
       name: 'usuario 1',
       userName: 'usuario 1',
       password: '123',
+      dateOfBirth: new Date('2000/03/04'),
     };
     component.loginForm = new FormGroup({
       userName: new FormControl(''),
