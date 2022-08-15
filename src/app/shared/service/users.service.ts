@@ -11,6 +11,7 @@ export class UsersService {
       name: 'Victor',
       userName: 'Victor1',
       password: '123',
+      dateOfBirth: new Date('2000/06/30'),
     },
   ];
 

@@ -30,7 +30,17 @@
     margin-top: var(--spacing-16);
     width: 100% ;
 }
-::ng-deep p-calendar .p-calendar {
+
+.signup-form-field--calendar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+::ng-deep .p-inputgroup p-calendar {
+    width: 100% !important;
+    
+}
+::ng-deep .p-inputgroup p-calendar .p-calendar{
     width: 100% !important;
     border: none;
     border-top-right-radius: 6px;

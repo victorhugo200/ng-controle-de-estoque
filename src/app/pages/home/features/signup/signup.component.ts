@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { InputModel } from 'src/app/shared/models/input-text';
+import { UsersService } from 'src/app/shared/service/users.service';
 
 @Component({
   selector: 'app-signup',
@@ -29,10 +37,14 @@ export class SignupComponent implements OnInit {
     icon: 'pi-eye',
     placeholder: 'Password',
   };
-  constructor(private fb: FormBuilder) {}
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private usersService: UsersService
+  ) {}
 
   ngOnInit(): void {
-    const pattern = '^[a-zA-Z0-9]+$';
     this.signupForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       userName: [
@@ -41,12 +53,38 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(16),
-          Validators.pattern(pattern),
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      dateOfBirth: [''],
+      dateOfBirth: [new Date(), [Validators.required, validatorDateOfBirth()]],
       password: ['', [Validators.required]],
     });
   }
+
+  signup() {
+    console.log(this.signupForm?.get('dateOfBirth')?.valid);
+    if (this.signupForm.valid) {
+      const user = {
+        ...this.signupForm.getRawValue(),
+        id: this.getId(),
+      };
+      this.usersService.addUser(user);
+      this.router.navigate(['']);
+    }
+  }
+
+  private getId() {
+    const listUsers = this.usersService.listUsers;
+    const id = listUsers[listUsers.length - 1].id;
+    return id + 1;
+  }
+}
+
+function validatorDateOfBirth() {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+    const today = new Date();
+    const ageIsValid = value.getFullYear() + 18 < today.getFullYear();
+    return !ageIsValid ? { ageIsInvalid: true } : null;
+  };
 }

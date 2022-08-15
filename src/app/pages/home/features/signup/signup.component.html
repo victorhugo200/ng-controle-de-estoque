@@ -1,7 +1,7 @@
 <div class="signup">
     <p-card class="signup-card">
         <h1 class="signup-card__title">Sign<span>Up</span></h1>
-        <form [formGroup]="signupForm" class="signup-form">
+        <form [formGroup]="signupForm" class="signup-form" (submit)="signup()">
             <div class="container-fluid">
                 <div class="signup-form-field">
                     <app-input [formRef]="signupForm" controlName="name" [spec]="specInputName">
@@ -24,9 +24,6 @@
                     <app-message-error
                         *ngIf="signupForm.get('userName')?.hasError('maxlength') && signupForm.get('userName')?.touched"
                         message="This field should have a maximum of 16 characters"></app-message-error>
-                    <!-- Verificar o erro da mensagem de username pattern na linha abaixo  -->
-                    <app-message-error *ngIf="signupForm.get('userName')?.hasError('pattern') 
-                        && signupForm.get('userName')?.touched" message="pattern"></app-message-error>
                 </div>
                 <div class="signup-form-field">
                     <app-input [formRef]="signupForm" controlName="email" [spec]="specInputEmail"></app-input>
@@ -37,11 +34,19 @@
                         *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched"
                         message="E-mail is invalid!"></app-message-error>
                 </div>
-                <div class="signup-form-field p-inputgroup">
+                <div class="signup-form-field p-inputgroup signup-form-field--calendar">
                     <p-calendar formControlName="dateOfBirth" dateFormat="dd/mm/yy" [showIcon]="true"
                         placeholder="Date Of Birth">
+
                     </p-calendar>
+                    <app-message-error
+                        *ngIf="signupForm.get('dateOfBirth')?.hasError('required') && signupForm.get('dateOfBirth')?.touched"
+                        message="This field is required"></app-message-error>
+                    <app-message-error
+                        *ngIf="signupForm.get('dateOfBirth')?.hasError('ageIsInvalid') && signupForm.get('dateOfBirth')?.touched"
+                        message="Age is not valid"></app-message-error>
                 </div>
+
                 <div class="signup-form-field">
                     <app-input-password [formRef]="signupForm" controlName="password" [spec]="specInputPassword">
                     </app-input-password>
@@ -54,7 +59,8 @@
                     Do you have account ? <a [routerLink]="['/','home']">SignIn</a>
                 </p>
             </div>
-            <button class="signup-form__submit" pButton type="submit" label="Create account">
+            <button [disabled]="signupForm.invalid" class="signup-form__submit" pButton type="submit"
+                label="Create account">
             </button>
         </form>
     </p-card>
